@@ -1,0 +1,12 @@
+# Tmp files
+.DS_Store
+*.*~
+
+# Grunt files
+node_modules/
+
+# Build
+build/
+
+# WebStorm
+.idea/

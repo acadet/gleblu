@@ -10,16 +10,6 @@ module.exports = function (grunt) {
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= props.license %> */\n',
         // Task configuration
-        concat: {
-            options: {
-                banner: '<%= banner %>',
-                stripBanners: true
-            },
-            dist: {
-                src: ['lib/gleblu.js'],
-                dest: 'dist/gleblu.js'
-            }
-        },
         uglify: {
             options: {
                 banner: '<%= banner %>'
@@ -28,33 +18,6 @@ module.exports = function (grunt) {
                 src: '<%= concat.dist.dest %>',
                 dest: 'dist/gleblu.min.js'
             }
-        },
-        jshint: {
-            options: {
-                node: true,
-                curly: true,
-                eqeqeq: true,
-                immed: true,
-                latedef: true,
-                newcap: true,
-                noarg: true,
-                sub: true,
-                undef: true,
-                unused: true,
-                eqnull: true,
-                browser: true,
-                globals: { jQuery: true },
-                boss: true
-            },
-            gruntfile: {
-                src: 'gruntfile.js'
-            },
-            lib_test: {
-                src: ['lib/**/*.js', 'test/**/*.js']
-            }
-        },
-        qunit: {
-            files: ['test/**/*.html']
         },
         watch: {
             gruntfile: {
@@ -69,13 +32,9 @@ module.exports = function (grunt) {
     });
 
     // These plugins provide necessary tasks
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task
-    grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
 };
 

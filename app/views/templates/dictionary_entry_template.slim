@@ -1,0 +1,12 @@
+h1
+  {{name}}
+
+ul
+  {{#each definitions}}
+    li
+      {{key}}
+      {{#each translations}}
+        li
+          {{description}} - {{value}}
+      {{/each}}
+  {{/each}}

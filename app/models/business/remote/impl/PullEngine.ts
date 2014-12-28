@@ -45,15 +45,15 @@ class PullEngine implements IPullEngine {
                     var currentEntry : any;
 
                     outcome = {};
-                    outcome.input = JQueryStatic(data).find('h3.headerWord').text();
+                    outcome.input = jQuery(data).find('h3.headerWord').text();
                     outcome.definitions = [];
 
-                    cursor = JQueryStatic(data).find('#articleWRD > table.WRD');
+                    cursor = jQuery(data).find('#articleWRD > table.WRD');
                     cursor.find('tr.even, tr.odd').each((index, element) => {
                         var elementCursor : JQuery;
                         var id : String;
 
-                        elementCursor = JQueryStatic(element);
+                        elementCursor = jQuery(element);
                         id = elementCursor.attr('id');
                         if (id != null && id.trim().match(this._from + this._to + ':.*')) {
                             currentEntry = {};
@@ -62,9 +62,9 @@ class PullEngine implements IPullEngine {
                             outcome.definitions.push(currentEntry);
                         }
 
-                        currentEntry.values.push({
+                        currentEntry.translations.push({
                             description: elementCursor.find('td:not(FrWrd, ToWrd)').text(),
-                            translation: elementCursor.find('td.ToWrd').text()
+                            value: elementCursor.find('td.ToWrd').text()
                         });
                     });
 
